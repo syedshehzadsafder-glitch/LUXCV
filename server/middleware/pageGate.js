@@ -9,12 +9,12 @@
    runs, so anything left there would bypass the login check entirely.
    See utils/pathGuard.js for which paths are covered. */
 
-const path = require('path');
+
 const { resolveUser } = require('./auth');
 const { clearAuthCookie } = require('../utils/token');
 const { normalise, classify } = require('../utils/pathGuard');
 
-const PROTECTED_DIR = path.join(__dirname, '..', '..', 'protected');
+const protectedFiles = require('../utils/protectedFiles');
 
 module.exports = async function pageGate(req, res, next) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return next();
@@ -41,9 +41,10 @@ module.exports = async function pageGate(req, res, next) {
       return res.status(403).type('text/plain').send('Forbidden');
     }
     req.user = user;
-    return res.sendFile(clean.slice(1), { root: PROTECTED_DIR, dotfiles: 'deny' }, (error) => {
-      if (error && !res.headersSent) next(); // not a real file: fall through to 404
-    });
+    const file = protectedFiles.get(clean);
+    if (!file) return next();
+    res.type(file.type);
+    return res.send(file.body);
   } catch (error) {
     return next(error);
   }
