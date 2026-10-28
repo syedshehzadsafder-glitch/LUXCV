@@ -280,9 +280,9 @@
 
       s.body.appendChild(el('div', { class: 'field-grid' }, [
         field({ key: 'personal.fullName', label: 'Full name', value: p.fullName, required: true,
-          maxlength: L.name, autocomplete: 'name', placeholder: 'e.g. Amina Rahman', onInput: set('fullName') }),
+          maxlength: L.name, autocomplete: 'name', placeholder: 'e.g. Muhammad Shahzad', onInput: set('fullName') }),
         field({ key: 'personal.jobTitle', label: 'Professional title', value: p.jobTitle,
-          maxlength: L.short, autocomplete: 'organization-title', placeholder: 'e.g. Product Designer', onInput: set('jobTitle') }),
+          maxlength: L.short, autocomplete: 'organization-title', placeholder: 'e.g. Web Developer', onInput: set('jobTitle') }),
         field({ key: 'personal.email', label: 'Email', value: p.email, required: true, type: 'email',
           maxlength: L.email, autocomplete: 'email', inputmode: 'email', spellcheck: false,
           placeholder: 'name@example.com', onInput: set('email') }),
