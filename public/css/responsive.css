@@ -1,0 +1,318 @@
+/* ==========================================================================
+   LUXCV - Responsive
+   Mobile-first overrides. Breakpoints (min-width):
+   480px · 640px · 768px · 1024px · 1280px · 1440px
+   Tested widths: 320, 375, 768, 1024, 1280, 1440.
+   ========================================================================== */
+
+/* ---------- 480px ---------- */
+@media (min-width: 30em) {
+  .hero__actions .btn {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------- 640px ---------- */
+@media (min-width: 40em) {
+  .grid--features,
+  .grid--gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .cta-band__inner {
+    padding-inline: var(--space-12);
+  }
+}
+
+/* Landing showcase: horizontal cards between 640px and 1023px */
+@media (min-width: 40em) and (max-width: 63.99em) {
+  .grid--showcase .template-card {
+    flex-direction: row;
+  }
+
+  .grid--showcase .template-card__preview {
+    flex: 0 0 44%;
+    border-right: var(--border);
+    border-bottom: 0;
+  }
+
+  .grid--showcase .template-card__body {
+    justify-content: center;
+  }
+}
+
+/* ---------- 768px: inline navigation ---------- */
+@media (min-width: 48em) {
+  .site-header__inner {
+    flex-wrap: nowrap;
+  }
+
+  .nav,
+  .js .nav {
+    width: auto;
+  }
+
+  .nav__toggle,
+  .js .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu,
+  .js .nav__menu {
+    position: static;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--space-6);
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .nav__list,
+  .js .nav__list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--space-6);
+  }
+
+  .nav__link,
+  .js .nav__link {
+    min-height: 2.75rem;
+    font-size: var(--text-sm);
+    border-bottom: 0;
+  }
+
+  .nav__link::after {
+    bottom: 0.45rem;
+  }
+
+  .nav__cta {
+    margin-top: 0;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .step {
+    display: block;
+  }
+
+  .step__number {
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+}
+
+/* ---------- 1024px ---------- */
+@media (min-width: 64em) {
+  .hero {
+    padding-block: var(--space-20) var(--space-24);
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-12);
+  }
+
+  .mockup-chip--top {
+    right: calc(var(--space-4) * -1);
+  }
+
+  .mockup-chip--bottom {
+    left: calc(var(--space-4) * -1);
+  }
+
+  .grid--showcase,
+  .grid--features,
+  .grid--gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+
+  .footer__brand {
+    grid-column: auto;
+  }
+}
+
+/* ---------- 1280px ---------- */
+@media (min-width: 80em) {
+  :root {
+    --container-max: 78rem;
+  }
+
+  .hero__inner {
+    gap: var(--space-16);
+  }
+}
+
+/* ---------- 1440px ---------- */
+@media (min-width: 90em) {
+  :root {
+    --container-max: 82rem;
+  }
+}
+
+/* ==========================================================================
+   Gallery modal and builder selection (added in Part 2)
+   ========================================================================== */
+
+/* Phones: the preview modal fills the screen. */
+@media (max-width: 39.99em) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .modal__panel {
+    height: 100%;
+    max-height: none;
+  }
+
+  .modal__header,
+  .modal__footer {
+    padding-inline: var(--space-4);
+  }
+
+  .modal__body {
+    padding: var(--space-4);
+  }
+
+  .modal__actions,
+  .modal__nav {
+    flex: 1 1 100%;
+  }
+
+  .modal__actions .btn {
+    flex: 1 1 0;
+  }
+
+  .modal__nav .btn {
+    flex: 0 0 auto;
+  }
+
+  .template-card__actions .btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 48em) {
+  .modal__body {
+    grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+    gap: var(--space-8);
+    padding: var(--space-8);
+  }
+
+  .modal__stage {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .modal__info {
+    position: sticky;
+    top: 0;
+    align-self: start;
+  }
+
+  .builder-selection {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    align-items: start;
+  }
+}
+
+/* ---------- Resume editor ---------- */
+@media (max-width: 47.99em) {
+  .save-status {
+    order: 3;
+    flex: 1 0 100%;
+  }
+
+  .builder-toolbar__actions {
+    width: 100%;
+  }
+
+  .builder-toolbar__actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+@media (min-width: 40em) {
+  .field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-grid > .field--wide {
+    grid-column: 1 / -1;
+  }
+
+  .editor-section__body {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 48em) {
+  .modal--preview .modal__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modal--preview .modal__stage {
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 64em) {
+  .view-switch {
+    display: none;
+  }
+
+  .builder-toolbar {
+    position: sticky;
+    top: var(--header-height);
+    z-index: calc(var(--z-header) - 1);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) minmax(21rem, 26rem);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .workspace[data-view] .workspace__editor,
+  .workspace[data-view] .workspace__preview {
+    display: block;
+  }
+
+  .workspace__preview {
+    position: sticky;
+    top: calc(var(--header-height) + var(--toolbar-height) + var(--space-4));
+    max-height: calc(100dvh - var(--header-height) - var(--toolbar-height) - var(--space-8));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

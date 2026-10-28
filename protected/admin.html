@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin dashboard | LUXCV</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/account.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="page-account" data-page="admin">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="LUXCV home">
+        <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+        <span>LUX<span class="brand__accent">CV</span></span>
+      </a>
+      <div class="account-bar">
+        <span class="account-bar__who" id="admin-who"></span>
+        <a class="btn btn--ghost btn--sm" href="dashboard.html">My account</a>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="logout">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container dash">
+      <div>
+        <p class="eyebrow">Administration</p>
+        <h1 class="dash__title">User management</h1>
+      </div>
+
+      <div class="alert" id="admin-notice" role="status" tabindex="-1" hidden></div>
+
+      <section class="stat-grid" aria-label="Summary">
+        <div class="stat"><span class="stat__value" data-stat="total">–</span><span class="stat__label">Total users</span></div>
+        <div class="stat"><span class="stat__value" data-stat="active">–</span><span class="stat__label">Active</span></div>
+        <div class="stat"><span class="stat__value" data-stat="inactive">–</span><span class="stat__label">Inactive</span></div>
+        <div class="stat"><span class="stat__value" data-stat="admins">–</span><span class="stat__label">Administrators</span></div>
+      </section>
+
+      <section class="panel-card" aria-labelledby="users-title">
+        <div class="panel-card__head">
+          <h2 class="panel-card__title" id="users-title">All users</h2>
+        </div>
+
+        <form class="toolbar-row" id="filter-form" role="search" novalidate>
+          <div class="field">
+            <label class="field__label" for="filter-q">Search name or email</label>
+            <input class="input" id="filter-q" type="search" autocomplete="off" maxlength="80">
+          </div>
+          <div class="field field--narrow">
+            <label class="field__label" for="filter-status">Status</label>
+            <select class="select" id="filter-status">
+              <option value="">All</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <button class="btn btn--secondary" type="submit">Search</button>
+        </form>
+
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Users table" style="margin-top: var(--space-4)">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created</th>
+                <th scope="col">Resumes</th>
+                <th scope="col"><span class="visually-hidden">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="users-body"></tbody>
+          </table>
+        </div>
+
+        <div class="pager" style="margin-top: var(--space-4)">
+          <span id="pager-info" role="status"></span>
+          <div class="pager__buttons">
+            <button class="btn btn--secondary btn--sm" type="button" data-page-step="-1">Previous</button>
+            <button class="btn btn--secondary btn--sm" type="button" data-page-step="1">Next</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="modal modal--sm" id="admin-confirm" aria-labelledby="admin-confirm-title"
+    aria-describedby="admin-confirm-text">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title" id="admin-confirm-title">Confirm</h2>
+      </div>
+      <div class="modal__body">
+        <p id="admin-confirm-text"></p>
+      </div>
+      <div class="modal__footer">
+        <span></span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="cancel" autofocus>Cancel</button>
+          <button class="btn btn--danger" type="button" data-dialog-close="confirm" id="admin-confirm-ok">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/dom.js" defer></script>
+  <script src="js/dialog.js" defer></script>
+  <script src="js/auth-client.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</body>
+
+</html>

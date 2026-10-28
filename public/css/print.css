@@ -1,0 +1,107 @@
+/* ==========================================================================
+   LUXCV - Print
+   Loaded with media="print". Marketing pages print as plain pages; the
+   builder prints only the resume sheet(s) in #print-root: no navigation,
+   toolbar, editor, notices or dialogs. This is also what "Save as PDF"
+   produces.
+
+   Paper: A4. @page has no margin because every template carries its own
+   padding, and box-decoration-break: clone (templates.css) repeats that
+   padding on each printed page. The resume is never scaled down to fit one
+   page: long resumes flow onto more pages, and whole entries and headings
+   stay together. Conventional templates print dark text on white; Midnight
+   Premium switches to its light print palette (templates.css).
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body {
+    display: block;
+    min-height: 0;
+  }
+
+  main {
+    padding: 14mm;
+  }
+
+  /* Interface chrome is never printed */
+  .skip-link,
+  .site-header,
+  .site-footer,
+  .no-print,
+  .mockup-chip,
+  .hero::before {
+    display: none !important;
+  }
+
+  /* Animations must never hide content on paper */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Builder: print only the resume sheet */
+  .page-builder main {
+    padding: 0;
+  }
+
+  .page-builder .builder-chrome {
+    display: none !important;
+  }
+
+  .resume-sheet {
+    width: var(--paper-width);
+    min-height: var(--paper-height);
+    margin: 0;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-sheet:not(:last-child) {
+    break-after: page;
+  }
+
+  /* Builder: only the print root is printed. */
+  .page-builder > *:not(#print-root) {
+    display: none !important;
+  }
+
+  .page-builder #print-root {
+    display: block;
+  }
+
+  dialog,
+  [hidden] {
+    display: none !important;
+  }
+
+  /* Links print as plain text in the template's own colours; the address is
+     already visible or clickable in the PDF. */
+  .page-builder #print-root a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-builder #print-root {
+    position: static;
+    transform: none;
+  }
+
+  .page-builder #print-root p,
+  .page-builder #print-root li {
+    orphans: 2;
+    widows: 2;
+  }
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Editor | LUXCV</title>
+  <meta name="description" content="Edit your resume with LUXCV. Saved privately to your account.">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&amp;display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/templates.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/nav-profile.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body id="top" class="page-builder" data-page="builder">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header builder-chrome">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="LUXCV home">
+        <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+        <span>LUX<span class="brand__accent">CV</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open main menu">
+          <span class="nav__toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="nav__menu" id="primary-menu">
+          <ul class="nav__list" role="list">
+            <li><a class="nav__link" href="templates.html">Templates</a></li>
+            <li><a class="nav__link" href="index.html#features">Features</a></li>
+            <li><a class="nav__link" href="index.html#how-it-works">How It Works</a></li>
+          </ul>
+          <a class="btn btn--primary btn--sm nav__cta" href="builder.html" aria-current="page">Create Resume</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="builder-toolbar builder-chrome" role="region" aria-label="Resume toolbar">
+    <div class="container builder-toolbar__inner">
+      <div class="builder-toolbar__id">
+        <a class="btn btn--ghost btn--sm" href="templates.html">&larr; Back to Templates</a>
+        <a class="btn btn--ghost btn--sm" href="dashboard.html">My Account</a>
+        <p class="builder-toolbar__template">
+          <span class="builder-toolbar__label">Template</span>
+          <span class="tag tag--gold" data-selected-template>Executive Gold</span>
+        </p>
+      </div>
+
+      <div class="builder-toolbar__actions">
+        <p class="save-status" id="save-status" data-save-status>Not saved yet</p>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="save">Save Draft</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="load">Load Saved Resume</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="preview">Preview</button>
+        <button class="btn btn--ghost btn--sm" type="button" data-action="clear">Clear Resume</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="print">Print Resume</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-action="pdf" title="Opens your browser’s print window. Choose “Save as PDF” there. The PDF keeps selectable text.">Save as PDF</button>
+        <button class="btn btn--primary btn--sm" type="button" data-action="download-pdf" title="Downloads an image-based PDF in one click. Text in it is not selectable.">Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-switch builder-chrome" role="region" aria-label="Workspace view">
+    <div class="container view-switch__inner">
+      <button class="view-switch__btn" type="button" data-view-button="edit" aria-pressed="true">Edit</button>
+      <button class="view-switch__btn" type="button" data-view-button="preview" aria-pressed="false">Preview</button>
+    </div>
+  </div>
+
+  <main id="main" class="builder-chrome">
+    <h1 class="visually-hidden">Resume editor</h1>
+
+    <div class="container">
+      <div class="workspace" data-workspace data-view="edit">
+        <section class="workspace__editor" id="panel-edit" aria-label="Edit your resume">
+          <div class="alert alert--error" id="error-summary" role="alert" tabindex="-1" hidden></div>
+          <div class="alert" id="notice" tabindex="-1" hidden></div>
+
+          <div class="resume-form resume-form--appearance" data-appearance-host></div>
+
+          <form id="resume-form" class="resume-form" novalidate autocomplete="on">
+            <noscript><p class="empty-state">The resume editor needs JavaScript. Please enable it and reload.</p></noscript>
+          </form>
+
+          <section class="storage-panel" aria-labelledby="storage-title">
+            <h2 class="storage-panel__title" id="storage-title">Saving and privacy</h2>
+            <p class="storage-panel__text">Your resume is saved automatically to <strong>your LUXCV account</strong>, with a working copy kept in this browser while you edit.</p>
+            <ul class="storage-panel__list" role="list">
+              <li>Only you can open it while you are signed in, from any browser or device. Use <strong>Log out</strong> in My Account when you finish on a shared computer.</li>
+              <li>If your connection drops, edits stay in this browser and are sent to your account when you are back online.</li>
+              <li>Don’t put passwords, ID numbers or other secrets in your resume.</li>
+              <li>To keep a copy outside LUXCV, use <strong>Save as PDF</strong>. A profile photo is saved too, shrunk to about 50&nbsp;KB.</li>
+            </ul>
+            <div class="storage-panel__actions">
+              <button class="btn btn--secondary btn--sm" type="button" data-action="load">Load saved resume</button>
+              <button class="btn btn--danger btn--sm" type="button" data-action="clear">Clear entire resume</button>
+              <button class="btn btn--danger btn--sm" type="button" data-action="delete-data">Delete all saved data</button>
+            </div>
+          </section>
+        </section>
+
+        <aside class="workspace__preview" id="panel-preview" aria-label="Resume preview">
+          <div class="preview-panel">
+            <div class="preview-panel__head">
+              <h2 class="preview-panel__title">Live preview</h2>
+              <p class="preview-panel__pages" data-preview-pages role="status"></p>
+            </div>
+            <div class="preview-panel__stage">
+              <div class="preview-panel__sheet" data-live-preview></div>
+              <div class="preview-empty" data-preview-empty hidden>
+                <p class="preview-empty__title">Your resume will appear here</p>
+                <p class="preview-empty__text">Start with your name or email. Everything you type shows up instantly in the template you chose.</p>
+                <button class="btn btn--primary btn--sm" type="button" data-action="focus-name">Start with my name</button>
+              </div>
+            </div>
+            <div class="preview-panel__actions">
+              <button class="btn btn--secondary btn--sm" type="button" data-action="print-version" aria-pressed="false" hidden>Show print version</button>
+              <button class="btn btn--secondary btn--sm" type="button" data-action="preview-full">Open full-size preview</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <p class="visually-hidden" role="status" aria-live="polite" id="sr-status"></p>
+
+  <dialog class="modal modal--preview" id="preview-dialog" aria-labelledby="preview-dialog-title">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <h2 class="modal__title" id="preview-dialog-title">Your resume</h2>
+        </div>
+        <button class="modal__close" type="button" data-dialog-close="close" aria-label="Close preview">
+          <span class="modal__close-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body" tabindex="0" role="region" aria-label="Full-size resume preview">
+        <div class="modal__stage" data-preview-stage></div>
+      </div>
+      <div class="modal__footer">
+        <span class="modal__count" data-preview-note>Shown with your current details.</span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal--sm" id="clear-dialog" aria-labelledby="clear-dialog-title" aria-describedby="clear-dialog-text">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title" id="clear-dialog-title">Clear entire resume?</h2>
+      </div>
+      <div class="modal__body">
+        <p id="clear-dialog-text">This removes everything you have entered, including your saved resume in your account. Your chosen template stays selected. This can’t be undone.</p>
+      </div>
+      <div class="modal__footer">
+        <span></span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="cancel" autofocus>Keep my resume</button>
+          <button class="btn btn--danger" type="button" data-dialog-close="confirm">Clear everything</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal--sm" id="load-dialog" aria-labelledby="load-dialog-title" aria-describedby="load-dialog-text">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title" id="load-dialog-title">Load saved resume?</h2>
+      </div>
+      <div class="modal__body">
+        <p id="load-dialog-text">This replaces what is on the page with the copy saved to your account.</p>
+      </div>
+      <div class="modal__footer">
+        <span></span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="cancel" autofocus>Keep what I have</button>
+          <button class="btn btn--primary" type="button" data-dialog-close="confirm">Load saved resume</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal--sm" id="delete-dialog" aria-labelledby="delete-dialog-title" aria-describedby="delete-dialog-text">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title" id="delete-dialog-title">Delete all saved data?</h2>
+      </div>
+      <div class="modal__body">
+        <p id="delete-dialog-text">This permanently removes your saved resume from your account and this browser, along with your saved template choice, and clears the editor. It can’t be undone. Resumes you saved as PDF files are not affected.</p>
+      </div>
+      <div class="modal__footer">
+        <span></span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="cancel" autofocus>Keep my data</button>
+          <button class="btn btn--danger" type="button" data-dialog-close="confirm">Delete everything</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal modal--sm" id="pdf-dialog" aria-labelledby="pdf-dialog-title" aria-describedby="pdf-dialog-text">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title" id="pdf-dialog-title">Save as PDF</h2>
+      </div>
+      <div class="modal__body">
+        <p id="pdf-dialog-text">LUXCV creates PDFs with your browser’s own print window, so the text stays sharp and selectable. Nothing is downloaded until you save from that window.</p>
+        <ol class="modal__steps">
+          <li>Choose <strong>Save as PDF</strong> as the destination (Chrome, Edge) or <strong>PDF &rarr; Save as PDF</strong> (Safari, Firefox).</li>
+          <li>Leave margins on <strong>Default</strong> or <strong>None</strong> and turn <strong>Background graphics</strong> on if you see it.</li>
+          <li>Press <strong>Save</strong>.</li>
+        </ol>
+      </div>
+      <div class="modal__footer">
+        <span></span>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close="cancel">Cancel</button>
+          <button class="btn btn--primary" type="button" data-dialog-close="confirm" autofocus>Open print window</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer builder-chrome">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="LUXCV home">
+            <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+            <span>LUX<span class="brand__accent">CV</span></span>
+          </a>
+          <p class="footer__about">A premium resume builder. Built as a university semester project with HTML, CSS and vanilla JavaScript.</p>
+        </div>
+
+        <nav aria-labelledby="footer-explore">
+          <h2 class="footer__heading" id="footer-explore">Explore</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="templates.html">Templates</a></li>
+            <li><a class="footer__link" href="index.html#features">Features</a></li>
+            <li><a class="footer__link" href="index.html#how-it-works">How It Works</a></li>
+            <li><a class="footer__link" href="index.html#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-start">
+          <h2 class="footer__heading" id="footer-start">Get started</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="templates.html">Browse all templates</a></li>
+            <li><a class="footer__link" href="index.html">Home</a></li>
+            <li><a class="footer__link" href="#top">Back to top</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; <span data-year>2026</span> LUXCV. A university semester project.</p>
+        <p>Your resume is private to your account.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="print-root" aria-hidden="true"></div>
+
+  <script src="js/data-model.js" defer></script>
+  <script src="js/sample-data.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/template-renderer.js" defer></script>
+  <script src="js/dom.js" defer></script>
+  <script src="js/dialog.js" defer></script>
+  <script src="js/editor-form.js" defer></script>
+  <script src="js/appearance.js" defer></script>
+  <script src="js/builder.js" defer></script>
+  <script src="js/pdf-export.js" defer></script>
+  <script src="js/pdf-download.js" defer></script>
+  <script src="js/auth-client.js" defer></script>
+  <script src="js/nav-profile.js" defer></script>
+  <script src="js/cloud-sync.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

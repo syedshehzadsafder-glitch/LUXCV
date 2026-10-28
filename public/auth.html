@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | LUXCV</title>
+  <meta name="description" content="Log in or create your LUXCV account to build and save your resume.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/account.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="page-account" data-page="auth">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="LUXCV home">
+        <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+        <span>LUX<span class="brand__accent">CV</span></span>
+      </a>
+      <a class="btn btn--ghost btn--sm" href="templates.html">&larr; Back to templates</a>
+    </div>
+  </header>
+
+  <main id="main" class="auth">
+    <div class="container auth__grid">
+
+      <section class="auth__story" aria-labelledby="story-title">
+        <p class="eyebrow">Your resume, safely kept</p>
+        <h1 class="auth__story-title" id="story-title">One step to <em>your story.</em></h1>
+        <p class="auth__story-text">Sign in to open the builder, keep your resume saved to your account and download a
+          polished PDF whenever you need it.</p>
+        <ul class="auth__points" role="list">
+          <li>Ten refined templates with live preview</li>
+          <li>Your resume saved securely to your account</li>
+          <li>Pick up where you left off on any device</li>
+        </ul>
+      </section>
+
+      <div class="auth-card">
+        <p class="auth-card__intent" id="intent" hidden></p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account">
+          <button class="auth-tab" type="button" role="tab" id="tab-login" aria-controls="panel-login"
+            aria-selected="true">Login</button>
+          <button class="auth-tab" type="button" role="tab" id="tab-register" aria-controls="panel-register"
+            aria-selected="false" tabindex="-1">Create Account</button>
+        </div>
+
+        <!-- ===== Login ===== -->
+        <section class="auth-panel" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <div>
+            <h2 class="auth-panel__title">Welcome back</h2>
+          </div>
+          <div class="alert alert--error auth-alert" id="login-alert" role="alert" tabindex="-1" hidden></div>
+
+          <form class="auth-form" id="login-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="login-email">Email</label>
+              <input class="input" id="login-email" name="email" type="email" autocomplete="email" required
+                aria-describedby="login-email-error">
+              <p class="field__error" id="login-email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="login-password">Password</label>
+              <div class="password-wrap">
+                <input class="input" id="login-password" name="password" type="password"
+                  autocomplete="current-password" required aria-describedby="login-password-error">
+                <button class="password-toggle" type="button" data-toggle-password="login-password"
+                  aria-controls="login-password" aria-pressed="false">Show</button>
+              </div>
+              <p class="field__error" id="login-password-error" hidden></p>
+            </div>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Log in</button>
+          </form>
+
+          <p class="auth-switch">New to LUXCV? <button type="button" data-switch="register">Create an account</button>
+          </p>
+        </section>
+
+        <!-- ===== Create account ===== -->
+        <section class="auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+          <div>
+            <h2 class="auth-panel__title">Create your account</h2>
+          </div>
+          <div class="alert alert--error auth-alert" id="register-alert" role="alert" tabindex="-1" hidden></div>
+
+          <form class="auth-form" id="register-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="register-name">Full name</label>
+              <input class="input" id="register-name" name="name" type="text" autocomplete="name" required
+                maxlength="60" aria-describedby="register-name-error">
+              <p class="field__error" id="register-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="register-email">Email</label>
+              <input class="input" id="register-email" name="email" type="email" autocomplete="email" required
+                aria-describedby="register-email-error">
+              <p class="field__error" id="register-email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="register-password">Password</label>
+              <div class="password-wrap">
+                <input class="input" id="register-password" name="password" type="password"
+                  autocomplete="new-password" required aria-describedby="register-password-hint register-password-error">
+                <button class="password-toggle" type="button" data-toggle-password="register-password"
+                  aria-controls="register-password" aria-pressed="false">Show</button>
+              </div>
+              <p class="field__hint" id="register-password-hint">At least 8 characters, with a letter and a number.</p>
+              <p class="field__error" id="register-password-error" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="register-confirm">Confirm password</label>
+              <input class="input" id="register-confirm" name="confirmPassword" type="password"
+                autocomplete="new-password" required aria-describedby="register-confirm-error">
+              <p class="field__error" id="register-confirm-error" hidden></p>
+            </div>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Create account</button>
+          </form>
+
+          <p class="auth-switch">Already have an account? <button type="button" data-switch="login">Log in</button></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data-model.js" defer></script>
+  <script src="js/auth-client.js" defer></script>
+  <script src="js/auth-page.js" defer></script>
+</body>
+
+</html>

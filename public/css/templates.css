@@ -1,0 +1,1995 @@
+/* ==========================================================================
+   LUXCV - Templates
+   1. .tpl-thumb  - small CSS-drawn template previews (landing + gallery)
+   2. .resume-sheet - A4 page base used by the live preview and PDF export
+   ========================================================================== */
+
+/* ---------- 1. Template thumbnails ---------- */
+.tpl-thumb {
+  --tpl-paper: #fbf9f4;
+  --tpl-ink: #2b2b31;
+  --tpl-soft: #cfc9ba;
+  --tpl-accent: #d4af66;
+  --tpl-pad: 16px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "head"
+    "main";
+  width: min(100%, 14rem);
+  margin-inline: auto;
+  aspect-ratio: 210 / 297;
+  overflow: hidden;
+  background: var(--tpl-paper);
+  border-radius: 2px;
+  box-shadow: var(--shadow-md);
+}
+
+.tpl-thumb__head {
+  grid-area: head;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  padding: var(--tpl-pad) var(--tpl-pad) 10px;
+}
+
+.tpl-thumb__name {
+  display: block;
+  width: 58%;
+  height: 9px;
+  background: var(--tpl-ink);
+}
+
+.tpl-thumb__role {
+  display: block;
+  width: 38%;
+  height: 4px;
+  background: var(--tpl-accent);
+}
+
+.tpl-thumb__main {
+  grid-area: main;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 4px var(--tpl-pad) var(--tpl-pad);
+}
+
+.tpl-thumb__side {
+  grid-area: side;
+  display: none;
+  align-content: start;
+  gap: 12px;
+}
+
+.tpl-thumb__block {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+
+.tpl-thumb__block::before {
+  content: "";
+  width: 36%;
+  height: 3px;
+  background: var(--tpl-ink);
+}
+
+.tpl-thumb__block::after {
+  content: "";
+  height: 30px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--tpl-soft) 0 2px,
+    transparent 2px 6px
+  );
+}
+
+.tpl-thumb__main .tpl-thumb__block:nth-child(1)::after {
+  height: 24px;
+}
+
+.tpl-thumb__main .tpl-thumb__block:nth-child(2)::after {
+  height: 78px;
+}
+
+.tpl-thumb__main .tpl-thumb__block:nth-child(3)::after {
+  height: 36px;
+}
+
+.tpl-thumb__main .tpl-thumb__block:nth-child(4)::after {
+  height: 24px;
+}
+
+.tpl-thumb__side .tpl-thumb__block::after {
+  height: 30px;
+}
+
+/* Aurelia - classic: centred header with a gold hairline */
+.tpl-thumb--aurelia .tpl-thumb__head {
+  justify-items: center;
+  margin-inline: var(--tpl-pad);
+  padding: var(--tpl-pad) 0 12px;
+  border-bottom: 1px solid var(--tpl-accent);
+}
+
+.tpl-thumb--aurelia .tpl-thumb__name {
+  width: 52%;
+}
+
+.tpl-thumb--aurelia .tpl-thumb__role {
+  width: 34%;
+}
+
+.tpl-thumb--aurelia .tpl-thumb__main {
+  padding-top: 12px;
+}
+
+/* Meridian - modern: slim left column with a vertical rule */
+.tpl-thumb--meridian {
+  grid-template-columns: 34% minmax(0, 1fr);
+  grid-template-areas:
+    "head head"
+    "side main";
+}
+
+.tpl-thumb--meridian .tpl-thumb__name {
+  width: 46%;
+}
+
+.tpl-thumb--meridian .tpl-thumb__side {
+  display: grid;
+  padding: 4px 8px var(--tpl-pad) var(--tpl-pad);
+  border-right: 1px solid var(--tpl-soft);
+}
+
+.tpl-thumb--meridian .tpl-thumb__main {
+  padding-left: 12px;
+}
+
+.tpl-thumb--meridian .tpl-thumb__block::before {
+  background: var(--tpl-accent);
+}
+
+/* Onyx - bold: dark sidebar with gold details */
+.tpl-thumb--onyx {
+  --tpl-ink: #17171a;
+
+  grid-template-columns: 35% minmax(0, 1fr);
+  grid-template-areas:
+    "side head"
+    "side main";
+}
+
+.tpl-thumb--onyx .tpl-thumb__side {
+  --tpl-soft: rgba(245, 241, 232, 0.3);
+
+  display: grid;
+  padding: var(--tpl-pad) 10px;
+  background: #1c1c22;
+}
+
+.tpl-thumb--onyx .tpl-thumb__side::before {
+  content: "";
+  justify-self: start;
+  width: 34px;
+  height: 34px;
+  background: var(--tpl-accent);
+  border-radius: 50%;
+}
+
+.tpl-thumb--onyx .tpl-thumb__side .tpl-thumb__block::before {
+  background: var(--tpl-accent);
+}
+
+.tpl-thumb--onyx .tpl-thumb__head {
+  padding-left: 14px;
+}
+
+.tpl-thumb--onyx .tpl-thumb__name {
+  width: 64%;
+}
+
+.tpl-thumb--onyx .tpl-thumb__main {
+  padding-left: 14px;
+}
+
+/* Ivory - minimal: airy, hairline rules */
+.tpl-thumb--ivory {
+  --tpl-paper: #fffdf8;
+  --tpl-soft: #dcd7ca;
+}
+
+.tpl-thumb--ivory .tpl-thumb__head {
+  padding-bottom: 16px;
+}
+
+.tpl-thumb--ivory .tpl-thumb__name {
+  width: 40%;
+  height: 6px;
+}
+
+.tpl-thumb--ivory .tpl-thumb__role {
+  width: 24%;
+  height: 2px;
+  background: var(--tpl-ink);
+  opacity: 0.5;
+}
+
+.tpl-thumb--ivory .tpl-thumb__main {
+  gap: 16px;
+}
+
+.tpl-thumb--ivory .tpl-thumb__block::before {
+  width: 22%;
+  height: 2px;
+  background: var(--tpl-accent);
+}
+
+.tpl-thumb--ivory .tpl-thumb__block::after {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--tpl-soft) 0 1px,
+    transparent 1px 6px
+  );
+}
+
+/* Sterling - executive: dark header band, main + side columns */
+.tpl-thumb--sterling {
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  grid-template-areas:
+    "head head"
+    "main side";
+}
+
+.tpl-thumb--sterling .tpl-thumb__head {
+  padding: 20px var(--tpl-pad) 14px;
+  background: #17171a;
+}
+
+.tpl-thumb--sterling .tpl-thumb__name {
+  width: 50%;
+  background: var(--tpl-paper);
+}
+
+.tpl-thumb--sterling .tpl-thumb__main {
+  padding-top: 14px;
+}
+
+.tpl-thumb--sterling .tpl-thumb__side {
+  display: grid;
+  padding: 14px var(--tpl-pad) var(--tpl-pad) 10px;
+  background: #f1ede2;
+}
+
+/* Solstice - creative: tinted right column, gold markers */
+.tpl-thumb--solstice {
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  grid-template-areas:
+    "head side"
+    "main side";
+}
+
+.tpl-thumb--solstice .tpl-thumb__head {
+  margin: var(--tpl-pad) 0 8px var(--tpl-pad);
+  padding: 0 8px 0 10px;
+  border-left: 3px solid var(--tpl-accent);
+}
+
+.tpl-thumb--solstice .tpl-thumb__side {
+  display: grid;
+  padding: var(--tpl-pad) 10px;
+  background: #f3ead6;
+}
+
+.tpl-thumb--solstice .tpl-thumb__block::before {
+  width: 7px;
+  height: 7px;
+  background: var(--tpl-accent);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   2. A4 resume sheet - shared structure
+   Every template renders the same markup (see template-renderer.js). The
+   rules here define the structure; each template below changes colours via
+   --rs-* variables and restyles the parts it wants to be different.
+   ========================================================================== */
+.resume-sheet {
+  --rs-bg: #fff;
+  --rs-text: #1b1b1f;
+  --rs-muted: #5d5d66;
+  --rs-accent: #8a6a24;
+  --rs-rule: #dedbd2;
+  --rs-name: var(--rs-text);
+  --rs-chip-bg: transparent;
+  --rs-chip-border: var(--rs-rule);
+  --rs-chip-text: var(--rs-text);
+  --rs-font-body: var(--font-body);
+  --rs-font-head: var(--font-body);
+  --rs-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  position: relative;
+  width: var(--paper-width);
+  min-height: var(--paper-height);
+  background: var(--rs-bg);
+  color: var(--rs-text);
+  font-family: var(--rs-font-body);
+  font-size: calc(10pt * var(--rs-scale, 1));
+  line-height: 1.45;
+  text-align: left;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.resume-sheet :is(h2, h3, p, ul, li) {
+  margin: 0;
+  padding: 0;
+}
+
+.resume-sheet :is(h2, h3) {
+  font-family: var(--rs-font-head);
+  letter-spacing: normal;
+  text-wrap: wrap;
+}
+
+.resume-sheet ul {
+  list-style: none;
+}
+
+.rs-monogram {
+  display: none;
+}
+
+.rs-name {
+  color: var(--rs-name);
+  font-size: calc(24pt * var(--rs-scale, 1));
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.rs-title {
+  margin-top: 1mm;
+  color: var(--rs-muted);
+}
+
+.rs-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5mm 5mm;
+  margin-top: 3mm;
+  color: var(--rs-muted);
+  font-size: calc(9pt * var(--rs-scale, 1));
+}
+
+.rs-body {
+  margin-top: 8mm;
+}
+
+.rs-section {
+  margin-top: 6mm;
+}
+
+.rs-section:first-child {
+  margin-top: 0;
+}
+
+.rs-heading {
+  margin-bottom: 2.5mm;
+  font-size: calc(10pt * var(--rs-scale, 1));
+  font-weight: 700;
+}
+
+.rs-text {
+  color: var(--rs-text);
+}
+
+.rs-item + .rs-item {
+  margin-top: 4mm;
+}
+
+.rs-item__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4mm;
+}
+
+.rs-item__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rs-item__title {
+  font-weight: 600;
+}
+
+.rs-item__org {
+  color: var(--rs-muted);
+}
+
+.rs-item__date {
+  flex: none;
+  color: var(--rs-muted);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.rs-item__details {
+  margin-top: 1mm;
+  color: var(--rs-muted);
+}
+
+.rs-bullets {
+  margin-top: 1.5mm;
+}
+
+.rs-bullets li {
+  position: relative;
+  padding-left: 4mm;
+}
+
+.rs-bullets li + li {
+  margin-top: 0.8mm;
+}
+
+.rs-bullets li::before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 0.5mm;
+  width: 1.2mm;
+  height: 1.2mm;
+  background: var(--rs-accent);
+  border-radius: 50%;
+}
+
+.rs-chips,
+.rs-skills--chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3mm;
+  margin-top: 1.8mm;
+}
+
+.rs-skills--chips {
+  margin-top: 0;
+}
+
+.rs-chips li,
+.rs-skills--chips li {
+  padding: 0.6mm 2.3mm;
+  color: var(--rs-chip-text);
+  font-size: calc(8.4pt * var(--rs-scale, 1));
+  line-height: 1.4;
+  background: var(--rs-chip-bg);
+  border: 1px solid var(--rs-chip-border);
+  border-radius: 2px;
+}
+
+.rs-skills--inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rs-skills--inline li + li::before {
+  content: "\00B7";
+  margin: 0 2mm;
+  color: var(--rs-accent);
+}
+
+.rs-skills--list li + li {
+  margin-top: 1mm;
+}
+
+.rs-skills--columns {
+  column-count: 3;
+  column-gap: 6mm;
+}
+
+.rs-skills--columns li {
+  break-inside: avoid;
+  padding-bottom: 0.8mm;
+}
+
+.rs-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6mm 6mm;
+}
+
+.rs-lang__level {
+  margin-left: 1.6mm;
+  color: var(--rs-muted);
+  font-size: 0.9em;
+}
+
+.rs-coursework {
+  margin-top: 2mm;
+}
+
+.rs-coursework__label {
+  color: var(--rs-muted);
+  font-size: calc(7.6pt * var(--rs-scale, 1));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rs-coursework .rs-chips {
+  margin-top: 1mm;
+}
+
+.rs-contact-list li {
+  margin-top: 2.2mm;
+}
+
+.rs-contact-list li:first-child {
+  margin-top: 0;
+}
+
+.rs-contact__label {
+  display: block;
+  color: var(--rs-muted);
+  font-size: calc(6.8pt * var(--rs-scale, 1));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rs-contact__value {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.rs-aside .rs-languages {
+  flex-direction: column;
+}
+
+/* Narrow columns: keep long emails on one line and stack item dates. */
+.rs-aside .rs-contact__value {
+  font-size: calc(8.6pt * var(--rs-scale, 1));
+}
+
+.rs-aside .rs-item__head {
+  display: block;
+}
+
+.rs-aside .rs-item__date {
+  display: block;
+}
+
+/* ---------- Preview frame (scaled sheet) ---------- */
+.sheet-preview {
+  --sheet-scale: 0.3;
+
+  position: relative;
+  width: 100%;
+  aspect-ratio: 210 / 297;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: var(--shadow-md);
+}
+
+.sheet-preview__scaler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--paper-width);
+  height: var(--paper-height);
+  transform: scale(var(--sheet-scale));
+  transform-origin: 0 0;
+}
+
+.sheet-preview .resume-sheet {
+  height: var(--paper-height);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Template 1 - Executive Gold
+   Ivory paper, centred Playfair header, gold hairlines and diamonds.
+   ========================================================================== */
+.resume--executive-gold {
+  --rs-bg: #fdfbf6;
+  --rs-text: #211e18;
+  --rs-muted: #6c675b;
+  --rs-accent: #8c6a1f;
+  --rs-gold: #c9a24d;
+  --rs-rule: #e9e0ca;
+  --rs-font-head: var(--font-heading);
+
+  padding: 15mm 18mm 14mm;
+  font-size: calc(10.4pt * var(--rs-scale, 1));
+}
+
+.resume--executive-gold .rs-header {
+  position: relative;
+  padding-bottom: 6mm;
+  text-align: center;
+  border-bottom: 1px solid var(--rs-gold);
+}
+
+.resume--executive-gold .rs-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1.3mm;
+  left: 50%;
+  width: 2.4mm;
+  height: 2.4mm;
+  background: var(--rs-gold);
+  box-shadow: 0 0 0 1.4mm var(--rs-bg);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.resume--executive-gold .rs-name {
+  font-size: calc(28pt * var(--rs-scale, 1));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.resume--executive-gold .rs-title {
+  margin-top: 1.5mm;
+  color: var(--rs-accent);
+  font-size: calc(8.6pt * var(--rs-scale, 1));
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.resume--executive-gold .rs-contact {
+  justify-content: center;
+  gap: 0;
+  margin-top: 3.5mm;
+}
+
+.resume--executive-gold .rs-contact li + li::before,
+.resume--executive-gold .rs-skills--inline li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1mm;
+  height: 1mm;
+  margin: 0 3mm;
+  background: var(--rs-gold);
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
+
+.resume--executive-gold .rs-body {
+  margin-top: 9mm;
+}
+
+.resume--executive-gold .rs-heading {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  color: var(--rs-accent);
+  font-size: calc(9.5pt * var(--rs-scale, 1));
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.resume--executive-gold .rs-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rs-rule);
+}
+
+.resume--executive-gold .rs-bullets li::before {
+  background: var(--rs-gold);
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   Template 2 - Modern Professional
+   Full-height navy sidebar (contact, skills, languages) beside the story.
+   ========================================================================== */
+.resume--modern-professional {
+  --rs-bg: #fff;
+  --rs-text: #1f2733;
+  --rs-muted: #586374;
+  --rs-accent: #2563a8;
+  --rs-navy: #14243d;
+  --rs-rule: #e2e7ee;
+  --rs-name: #14243d;
+
+  display: grid;
+  grid-template-columns: 70mm minmax(0, 1fr);
+  /* The sidebar colour is painted on the sheet so it fills every printed page. */
+  background: linear-gradient(to right, var(--rs-navy) 70mm, var(--rs-bg) 70mm);
+  font-size: calc(10.2pt * var(--rs-scale, 1));
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "aside header"
+    "aside main";
+}
+
+.resume--modern-professional .rs-header {
+  grid-area: header;
+  padding: 16mm 14mm 0 12mm;
+}
+
+.resume--modern-professional .rs-body {
+  display: contents;
+}
+
+.resume--modern-professional .rs-main {
+  grid-area: main;
+  padding: 8mm 14mm 12mm 12mm;
+}
+
+.resume--modern-professional .rs-aside {
+  --rs-muted: #9fb3cf;
+  --rs-chip-border: rgba(159, 179, 207, 0.45);
+  --rs-chip-text: #e8eff8;
+
+  grid-area: aside;
+  padding: 16mm 9mm 12mm 10mm;
+  color: #dbe5f2;
+}
+
+.resume--modern-professional .rs-name {
+  font-size: calc(27pt * var(--rs-scale, 1));
+  letter-spacing: -0.015em;
+}
+
+.resume--modern-professional .rs-title {
+  margin-top: 1.5mm;
+  color: var(--rs-accent);
+  font-size: calc(11.5pt * var(--rs-scale, 1));
+  font-weight: 500;
+}
+
+.resume--modern-professional .rs-header::after {
+  content: "";
+  display: block;
+  width: 14mm;
+  height: 1mm;
+  margin-top: 4mm;
+  background: var(--rs-accent);
+}
+
+.resume--modern-professional .rs-heading {
+  padding-bottom: 1.5mm;
+  color: var(--rs-navy);
+  font-size: calc(8.4pt * var(--rs-scale, 1));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rs-rule);
+}
+
+.resume--modern-professional .rs-aside .rs-heading {
+  color: #8fb7e8;
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+.resume--modern-professional .rs-aside .rs-section {
+  margin-top: 7mm;
+}
+
+.resume--modern-professional .rs-aside .rs-section:first-child {
+  margin-top: 0;
+}
+
+.resume--modern-professional .rs-item__title {
+  color: var(--rs-navy);
+}
+
+/* ==========================================================================
+   Template 3 - Minimalist White
+   Pure white, light type, section titles in a slim left margin.
+   ========================================================================== */
+.resume--minimalist-white {
+  --rs-bg: #fff;
+  --rs-text: #2b2b2f;
+  --rs-muted: #6b6b72;
+  --rs-accent: #2b2b2f;
+  --rs-rule: #ececee;
+
+  padding: 22mm 20mm 16mm;
+  font-size: calc(9.6pt * var(--rs-scale, 1));
+  line-height: 1.55;
+}
+
+.resume--minimalist-white .rs-name {
+  font-size: calc(26pt * var(--rs-scale, 1));
+  font-weight: 300;
+  letter-spacing: -0.015em;
+}
+
+.resume--minimalist-white .rs-title {
+  margin-top: 2mm;
+  font-size: calc(8pt * var(--rs-scale, 1));
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.resume--minimalist-white .rs-contact {
+  gap: 0 6mm;
+  margin-top: 5mm;
+  font-size: calc(8.6pt * var(--rs-scale, 1));
+}
+
+.resume--minimalist-white .rs-body {
+  margin-top: 11mm;
+}
+
+.resume--minimalist-white .rs-section {
+  display: grid;
+  grid-template-columns: 34mm minmax(0, 1fr);
+  column-gap: 8mm;
+  margin-top: 10mm;
+}
+
+.resume--minimalist-white .rs-section:first-child {
+  margin-top: 0;
+}
+
+.resume--minimalist-white .rs-heading {
+  margin: 0;
+  padding-top: 0.5mm;
+  color: var(--rs-muted);
+  font-size: calc(7.4pt * var(--rs-scale, 1));
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.resume--minimalist-white .rs-item + .rs-item {
+  margin-top: 5mm;
+}
+
+.resume--minimalist-white .rs-item__title {
+  font-weight: 500;
+}
+
+.resume--minimalist-white .rs-bullets li::before {
+  top: 0.72em;
+  width: 2.4mm;
+  height: 1px;
+  background: var(--rs-muted);
+  border-radius: 0;
+}
+
+.resume--minimalist-white .rs-skills--inline li + li::before {
+  color: var(--rs-muted);
+}
+
+/* ==========================================================================
+   Template 4 - Creative Portfolio
+   Oversized Playfair name, numbered italic headings, portfolio grid, warm
+   tinted right column.
+   ========================================================================== */
+.resume--creative-portfolio {
+  --rs-bg: #fffaf4;
+  --rs-text: #1d1a17;
+  --rs-muted: #6b625a;
+  --rs-accent: #c8431c;
+  --rs-rule: #ecdfd2;
+  --rs-soft: #f7ebde;
+  --rs-font-head: var(--font-heading);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.resume--creative-portfolio .rs-header {
+  padding: 15mm 16mm 7mm;
+}
+
+.resume--creative-portfolio .rs-header::before {
+  content: "";
+  display: block;
+  width: 14mm;
+  height: 2.2mm;
+  margin-bottom: 5mm;
+  background: var(--rs-accent);
+}
+
+.resume--creative-portfolio .rs-name {
+  max-width: 125mm;
+  font-size: calc(36pt * var(--rs-scale, 1));
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.resume--creative-portfolio .rs-title {
+  margin-top: 3.5mm;
+  color: var(--rs-accent);
+  font-family: var(--font-heading);
+  font-size: calc(14pt * var(--rs-scale, 1));
+  font-style: italic;
+}
+
+.resume--creative-portfolio .rs-body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) 64mm;
+  margin-top: 0;
+  background: linear-gradient(to left, var(--rs-soft) 64mm, transparent 64mm);
+}
+
+.resume--creative-portfolio .rs-main {
+  padding: 2mm 8mm 12mm 16mm;
+  counter-reset: rs-section;
+}
+
+.resume--creative-portfolio .rs-aside {
+  padding: 8mm 10mm 12mm 9mm;
+}
+
+.resume--creative-portfolio .rs-main .rs-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 2.5mm;
+  font-family: var(--font-heading);
+  font-size: calc(15pt * var(--rs-scale, 1));
+  font-style: italic;
+  font-weight: 600;
+  counter-increment: rs-section;
+}
+
+.resume--creative-portfolio .rs-main .rs-heading::before {
+  content: "0" counter(rs-section);
+  color: var(--rs-accent);
+  font-family: var(--font-body);
+  font-size: calc(7.5pt * var(--rs-scale, 1));
+  font-style: normal;
+  letter-spacing: 0.12em;
+}
+
+.resume--creative-portfolio .rs-aside .rs-heading {
+  font-size: calc(7.6pt * var(--rs-scale, 1));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.resume--creative-portfolio .rs-aside .rs-section {
+  margin-top: 6.5mm;
+}
+
+.resume--creative-portfolio .rs-aside .rs-section:first-child {
+  margin-top: 0;
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-section__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5mm;
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item + .rs-item {
+  margin-top: 0;
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item {
+  padding-top: 2.5mm;
+  border-top: 0.5mm solid var(--rs-text);
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item__head {
+  display: block;
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item__title {
+  font-family: var(--font-heading);
+  font-size: calc(11pt * var(--rs-scale, 1));
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item__org {
+  color: var(--rs-accent);
+  font-size: calc(8pt * var(--rs-scale, 1));
+}
+
+.resume--creative-portfolio .rs-section--projects .rs-item__details {
+  font-size: calc(8.8pt * var(--rs-scale, 1));
+}
+
+.resume--creative-portfolio {
+  --rs-chip-border: rgba(29, 26, 23, 0.3);
+}
+
+/* ==========================================================================
+   Template 5 - Corporate Classic
+   Times-style serif, uppercase name, heavy rule, ruled section headings.
+   ========================================================================== */
+.resume--corporate-classic {
+  --rs-bg: #fff;
+  --rs-text: #111;
+  --rs-muted: #444;
+  --rs-accent: #111;
+  --rs-rule: #111;
+  --rs-font-body: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --rs-font-head: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+
+  padding: 16mm 18mm 14mm;
+  font-size: calc(11pt * var(--rs-scale, 1));
+}
+
+.resume--corporate-classic .rs-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8mm;
+  padding-bottom: 4mm;
+  border-bottom: 2px solid var(--rs-accent);
+}
+
+.resume--corporate-classic .rs-name {
+  font-size: calc(21pt * var(--rs-scale, 1));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume--corporate-classic .rs-title {
+  margin-top: 1.5mm;
+  color: #333;
+  font-size: calc(11.5pt * var(--rs-scale, 1));
+  font-style: italic;
+}
+
+.resume--corporate-classic .rs-contact {
+  flex-direction: column;
+  gap: 0.4mm;
+  margin-top: 0;
+  color: #222;
+  font-size: calc(9.6pt * var(--rs-scale, 1));
+  text-align: right;
+}
+
+.resume--corporate-classic .rs-body {
+  margin-top: 5mm;
+}
+
+.resume--corporate-classic .rs-section {
+  margin-top: 5mm;
+}
+
+.resume--corporate-classic .rs-heading {
+  padding-bottom: 0.8mm;
+  font-size: calc(10.6pt * var(--rs-scale, 1));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rs-accent);
+}
+
+.resume--corporate-classic .rs-item__title {
+  font-weight: 700;
+}
+
+.resume--corporate-classic .rs-item__org {
+  color: #222;
+  font-style: italic;
+}
+
+.resume--corporate-classic .rs-bullets li::before {
+  width: 1mm;
+  height: 1mm;
+  background: var(--rs-accent);
+}
+
+.resume--corporate-classic .rs-skills--inline li + li::before {
+  content: ",";
+  margin: 0 1.2mm 0 0;
+  color: #111;
+}
+
+.resume--corporate-classic .rs-skills--inline li {
+  margin-right: 1.2mm;
+}
+
+/* ==========================================================================
+   Template 6 - Tech Specialist
+   Dark terminal-style header, monospace accents, grouped skills panel.
+   ========================================================================== */
+.resume--tech-specialist {
+  --rs-bg: #f8fafb;
+  --rs-text: #14262b;
+  --rs-muted: #566c72;
+  --rs-accent: #0b7d78;
+  --rs-rule: #d8e2e4;
+  --rs-chip-bg: #fff;
+  --rs-chip-border: rgba(11, 125, 120, 0.4);
+  --rs-chip-text: #0a5a56;
+}
+
+.resume--tech-specialist .rs-header {
+  padding: 13mm 16mm 9mm;
+  color: #e8f3f3;
+  background: #0d1d22;
+}
+
+.resume--tech-specialist .rs-name {
+  color: #fff;
+  font-size: calc(26pt * var(--rs-scale, 1));
+  letter-spacing: -0.015em;
+}
+
+.resume--tech-specialist .rs-title {
+  margin-top: 1.5mm;
+  color: #5fd3c8;
+  font-family: var(--rs-mono);
+  font-size: calc(10pt * var(--rs-scale, 1));
+}
+
+.resume--tech-specialist .rs-title::before {
+  content: "> ";
+  opacity: 0.6;
+}
+
+.resume--tech-specialist .rs-contact {
+  gap: 1mm 6mm;
+  margin-top: 4mm;
+  color: #a8c3c6;
+  font-family: var(--rs-mono);
+  font-size: calc(8pt * var(--rs-scale, 1));
+}
+
+.resume--tech-specialist .rs-body {
+  margin-top: 0;
+  padding: 7mm 16mm 12mm;
+}
+
+.resume--tech-specialist .rs-section {
+  margin-top: 5.5mm;
+}
+
+.resume--tech-specialist .rs-heading {
+  color: var(--rs-accent);
+  font-family: var(--rs-mono);
+  font-size: calc(8.6pt * var(--rs-scale, 1));
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.resume--tech-specialist .rs-heading::before {
+  content: "// ";
+  opacity: 0.6;
+}
+
+.resume--tech-specialist .rs-skills--grouped {
+  padding: 3mm 4mm;
+  background: #fff;
+  border: 1px solid var(--rs-rule);
+  border-left: 1mm solid var(--rs-accent);
+}
+
+.resume--tech-specialist .rs-skillgroup {
+  display: grid;
+  grid-template-columns: 34mm minmax(0, 1fr);
+  gap: 0 4mm;
+  align-items: baseline;
+}
+
+.resume--tech-specialist .rs-skillgroup + .rs-skillgroup {
+  margin-top: 2mm;
+}
+
+.resume--tech-specialist .rs-skillgroup__name {
+  color: var(--rs-accent);
+  font-family: var(--rs-mono);
+  font-size: calc(8pt * var(--rs-scale, 1));
+}
+
+.resume--tech-specialist .rs-skillgroup .rs-chips {
+  margin-top: 0;
+}
+
+.resume--tech-specialist .rs-chips li {
+  font-family: var(--rs-mono);
+  font-size: calc(7.8pt * var(--rs-scale, 1));
+}
+
+.resume--tech-specialist .rs-item__date {
+  font-family: var(--rs-mono);
+  font-size: calc(8pt * var(--rs-scale, 1));
+}
+
+.resume--tech-specialist .rs-item__org {
+  color: var(--rs-accent);
+}
+
+.resume--tech-specialist .rs-bullets li::before {
+  border-radius: 0;
+}
+
+/* ==========================================================================
+   Template 7 - Student & Graduate
+   Indigo header band, education in highlighted cards, skills column.
+   ========================================================================== */
+.resume--student-graduate {
+  --rs-bg: #fff;
+  --rs-text: #1d2233;
+  --rs-muted: #5b6275;
+  --rs-accent: #4254c5;
+  --rs-ink: #1d2a78;
+  --rs-tint: #eef1ff;
+  --rs-rule: #e1e5f5;
+  --rs-chip-bg: #fff;
+  --rs-chip-border: #c9d0f2;
+  --rs-chip-text: #2c3a9a;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.resume--student-graduate .rs-header {
+  padding: 14mm 16mm 8mm;
+  background: var(--rs-tint);
+  border-bottom: 3px solid var(--rs-accent);
+}
+
+.resume--student-graduate .rs-name {
+  color: var(--rs-ink);
+  font-size: calc(26pt * var(--rs-scale, 1));
+}
+
+.resume--student-graduate .rs-title {
+  color: var(--rs-accent);
+  font-weight: 600;
+}
+
+.resume--student-graduate .rs-body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) 56mm;
+  margin-top: 0;
+  --rs-side: #f7f8fe;
+  background: linear-gradient(to left, var(--rs-side) calc(56mm - 1px), var(--rs-rule) calc(56mm - 1px) 56mm, transparent 56mm);
+}
+
+.resume--student-graduate .rs-main {
+  padding: 7mm 8mm 12mm 16mm;
+}
+
+.resume--student-graduate .rs-aside {
+  padding: 7mm 12mm 12mm 8mm;
+}
+
+.resume--student-graduate .rs-section {
+  margin-top: 5mm;
+}
+
+.resume--student-graduate .rs-section:first-child {
+  margin-top: 0;
+}
+
+.resume--student-graduate .rs-heading {
+  margin-bottom: 2.5mm;
+  color: var(--rs-ink);
+  font-size: calc(10pt * var(--rs-scale, 1));
+  border-bottom: 1px solid var(--rs-rule);
+}
+
+.resume--student-graduate .rs-heading span {
+  display: inline-block;
+  padding-bottom: 1mm;
+  margin-bottom: -1px;
+  border-bottom: 2px solid var(--rs-accent);
+}
+
+.resume--student-graduate .rs-section--education .rs-item {
+  padding: 3mm 4mm;
+  background: var(--rs-tint);
+  border-left: 1mm solid var(--rs-accent);
+}
+
+.resume--student-graduate .rs-section--education .rs-item__title {
+  color: var(--rs-ink);
+  font-size: calc(11pt * var(--rs-scale, 1));
+}
+
+.resume--student-graduate .rs-item__org {
+  color: var(--rs-accent);
+}
+
+.resume--student-graduate .rs-aside .rs-skills--list li {
+  padding: 0.8mm 0;
+  border-bottom: 1px solid var(--rs-rule);
+}
+
+.resume--student-graduate .rs-aside .rs-skills--list li + li {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   Template 8 - Elegant Serif
+   Editorial: large light Playfair name, drop-cap profile, italic headings
+   flanked by hairlines, burgundy accent.
+   ========================================================================== */
+.resume--elegant-serif {
+  --rs-bg: #fffdf9;
+  --rs-text: #2b2624;
+  --rs-muted: #7a706a;
+  --rs-accent: #7b2d3b;
+  --rs-rule: #e6dcd0;
+  --rs-font-body: Georgia, "Times New Roman", "Liberation Serif", serif;
+  --rs-font-head: var(--font-heading);
+
+  padding: 18mm 19mm 14mm;
+  font-size: calc(10.2pt * var(--rs-scale, 1));
+  line-height: 1.55;
+}
+
+.resume--elegant-serif .rs-header {
+  padding-bottom: 6mm;
+  border-bottom: 1px solid var(--rs-accent);
+}
+
+.resume--elegant-serif .rs-name {
+  font-size: calc(32pt * var(--rs-scale, 1));
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.resume--elegant-serif .rs-title {
+  margin-top: 2.5mm;
+  color: var(--rs-accent);
+  font-family: var(--font-heading);
+  font-size: calc(12.5pt * var(--rs-scale, 1));
+  font-style: italic;
+}
+
+.resume--elegant-serif .rs-contact {
+  margin-top: 3.5mm;
+  font-size: calc(9pt * var(--rs-scale, 1));
+  font-style: italic;
+}
+
+.resume--elegant-serif .rs-body {
+  margin-top: 7mm;
+}
+
+.resume--elegant-serif .rs-heading {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  color: var(--rs-accent);
+  font-size: calc(12pt * var(--rs-scale, 1));
+  font-style: italic;
+  font-weight: 500;
+}
+
+.resume--elegant-serif .rs-heading::before,
+.resume--elegant-serif .rs-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rs-rule);
+}
+
+.resume--elegant-serif .rs-section--summary .rs-text::first-letter {
+  float: left;
+  padding: 1mm 2mm 0 0;
+  color: var(--rs-accent);
+  font-family: var(--font-heading);
+  font-size: calc(34pt * var(--rs-scale, 1));
+  line-height: 0.8;
+}
+
+.resume--elegant-serif .rs-item__title {
+  font-family: var(--font-heading);
+  font-size: calc(11pt * var(--rs-scale, 1));
+}
+
+.resume--elegant-serif .rs-item__org {
+  font-style: italic;
+}
+
+.resume--elegant-serif .rs-bullets li::before {
+  top: 0.78em;
+  width: 2.2mm;
+  height: 1px;
+  background: var(--rs-accent);
+  border-radius: 0;
+}
+
+/* ==========================================================================
+   Template 9 - Compact ATS-Friendly
+   Arial, black on white, conventional headings, no decoration. Built to be
+   read cleanly by applicant-tracking systems.
+   ========================================================================== */
+.resume--compact-ats {
+  --rs-bg: #fff;
+  --rs-text: #000;
+  --rs-muted: #222;
+  --rs-accent: #000;
+  --rs-rule: #000;
+  --rs-font-body: Arial, Helvetica, "Liberation Sans", sans-serif;
+  --rs-font-head: Arial, Helvetica, "Liberation Sans", sans-serif;
+
+  padding: 13mm 15mm 11mm;
+  font-size: calc(9.8pt * var(--rs-scale, 1));
+  line-height: 1.35;
+}
+
+.resume--compact-ats .rs-name {
+  font-size: calc(19pt * var(--rs-scale, 1));
+}
+
+.resume--compact-ats .rs-title {
+  margin-top: 0.5mm;
+  color: #000;
+  font-size: calc(10.5pt * var(--rs-scale, 1));
+}
+
+.resume--compact-ats .rs-contact {
+  gap: 0;
+  margin-top: 1.5mm;
+  color: #000;
+  font-size: calc(9pt * var(--rs-scale, 1));
+}
+
+.resume--compact-ats .rs-contact li + li::before {
+  content: "|";
+  margin: 0 2.5mm;
+}
+
+.resume--compact-ats .rs-body {
+  margin-top: 3mm;
+}
+
+.resume--compact-ats .rs-section {
+  margin-top: 3.6mm;
+}
+
+.resume--compact-ats .rs-heading {
+  margin-bottom: 1.8mm;
+  padding-bottom: 0.5mm;
+  font-size: calc(9.6pt * var(--rs-scale, 1));
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000;
+}
+
+.resume--compact-ats .rs-item + .rs-item {
+  margin-top: 2.6mm;
+}
+
+.resume--compact-ats .rs-item__main {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0 1.5mm;
+}
+
+.resume--compact-ats .rs-item__org {
+  color: #000;
+}
+
+.resume--compact-ats .rs-item__org::before {
+  content: "| ";
+}
+
+.resume--compact-ats .rs-item__date {
+  color: #000;
+}
+
+.resume--compact-ats .rs-item__details {
+  color: #000;
+}
+
+.resume--compact-ats .rs-bullets {
+  margin-top: 1mm;
+}
+
+.resume--compact-ats .rs-bullets li::before {
+  width: 0.9mm;
+  height: 0.9mm;
+  background: #000;
+}
+
+.resume--compact-ats .rs-skills--inline li + li::before {
+  content: ",";
+  margin: 0 1.2mm 0 0;
+  color: #000;
+}
+
+.resume--compact-ats .rs-skills--inline li {
+  margin-right: 1.2mm;
+}
+
+.resume--compact-ats .rs-chips li {
+  padding: 0;
+  font-size: calc(9pt * var(--rs-scale, 1));
+  border: 0;
+}
+
+.resume--compact-ats .rs-chips li + li::before {
+  content: ", ";
+}
+
+.resume--compact-ats .rs-chips {
+  gap: 0;
+}
+
+/* ==========================================================================
+   Template 10 - Midnight Premium
+   Dark on screen. When printed, or when "print version" is toggled in the
+   preview, it switches to a light, ink-friendly palette automatically.
+   ========================================================================== */
+.resume--midnight-premium {
+  --rs-bg: #0e0f13;
+  --rs-text: #ebe8df;
+  --rs-muted: #a0a0a8;
+  --rs-accent: #d4af66;
+  --rs-rule: rgba(212, 175, 102, 0.3);
+  --rs-name: #f7f3ea;
+  --rs-panel: #15161c;
+  --rs-chip-border: rgba(212, 175, 102, 0.45);
+  --rs-chip-text: #e9dcc0;
+  --rs-font-head: var(--font-heading);
+
+  display: grid;
+  font-size: calc(10.3pt * var(--rs-scale, 1));
+  grid-template-columns: minmax(0, 1fr) 64mm;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header aside"
+    "main aside";
+  background: linear-gradient(to left, var(--rs-panel) calc(64mm - 1px), var(--rs-rule) calc(64mm - 1px) 64mm, var(--rs-bg) 64mm);
+}
+
+.resume--midnight-premium .rs-header {
+  display: grid;
+  grid-area: header;
+  grid-template-columns: auto 1fr;
+  gap: 0 6mm;
+  align-items: center;
+  padding: 15mm 10mm 6mm 16mm;
+}
+
+.resume--midnight-premium .rs-monogram {
+  display: grid;
+  width: 19mm;
+  height: 19mm;
+  color: var(--rs-accent);
+  font-family: var(--font-heading);
+  font-size: calc(15pt * var(--rs-scale, 1));
+  letter-spacing: 0.04em;
+  border: 1px solid var(--rs-accent);
+  border-radius: 50%;
+  place-items: center;
+}
+
+.resume--midnight-premium .rs-name {
+  font-size: calc(26pt * var(--rs-scale, 1));
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.resume--midnight-premium .rs-title {
+  margin-top: 2mm;
+  color: var(--rs-accent);
+  font-size: calc(8.2pt * var(--rs-scale, 1));
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.resume--midnight-premium .rs-body {
+  display: contents;
+}
+
+.resume--midnight-premium .rs-main {
+  grid-area: main;
+  padding: 4mm 10mm 12mm 16mm;
+}
+
+.resume--midnight-premium .rs-aside {
+  grid-area: aside;
+  padding: 15mm 9mm 12mm;
+}
+
+.resume--midnight-premium .rs-heading {
+  color: var(--rs-accent);
+  font-size: calc(8.2pt * var(--rs-scale, 1));
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.resume--midnight-premium .rs-aside .rs-section {
+  margin-top: 7mm;
+}
+
+.resume--midnight-premium .rs-aside .rs-section:first-child {
+  margin-top: 0;
+}
+
+.resume--midnight-premium .rs-section--experience .rs-item {
+  position: relative;
+  padding-left: 6mm;
+  border-left: 1px solid var(--rs-rule);
+}
+
+.resume--midnight-premium .rs-section--experience .rs-item::before {
+  content: "";
+  position: absolute;
+  top: 1.4mm;
+  left: -1.5mm;
+  width: 2.6mm;
+  height: 2.6mm;
+  background: var(--rs-bg);
+  border: 1px solid var(--rs-accent);
+  border-radius: 50%;
+}
+
+.resume--midnight-premium .rs-section--experience .rs-item + .rs-item {
+  margin-top: 0;
+  padding-top: 4mm;
+}
+
+.resume--midnight-premium .rs-item__title {
+  color: #fff;
+}
+
+.resume--midnight-premium .rs-bullets li::before {
+  border-radius: 0;
+}
+
+/* Print version: light palette. The same values apply to the preview's
+   "Show print version" toggle (.is-print-preview). Keep the two blocks in sync. */
+@media print {
+  .resume--midnight-premium {
+    --rs-bg: #fff;
+    --rs-text: #1b1b20;
+    --rs-muted: #50505a;
+    --rs-accent: #7d5f1d;
+    --rs-rule: rgba(125, 95, 29, 0.35);
+    --rs-name: #111;
+    --rs-panel: #f6f3ea;
+    --rs-chip-border: rgba(125, 95, 29, 0.5);
+    --rs-chip-text: #3b3426;
+  }
+
+  .resume--midnight-premium .rs-item__title {
+    color: #111;
+  }
+}
+
+.resume--midnight-premium.is-print-preview {
+  --rs-bg: #fff;
+  --rs-text: #1b1b20;
+  --rs-muted: #50505a;
+  --rs-accent: #7d5f1d;
+  --rs-rule: rgba(125, 95, 29, 0.35);
+  --rs-name: #111;
+  --rs-panel: #f6f3ea;
+  --rs-chip-border: rgba(125, 95, 29, 0.5);
+  --rs-chip-text: #3b3426;
+}
+
+.resume--midnight-premium.is-print-preview .rs-item__title {
+  color: #111;
+}
+
+
+/* ==========================================================================
+   Part 4 additions: links, photo, appearance settings, multi-page behaviour
+   ========================================================================== */
+
+/* ---------- Text and links ---------- */
+.rs-text,
+.rs-item__details,
+.rs-bullets li {
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.rs-name,
+.rs-title,
+.rs-item__title,
+.rs-item__org,
+.rs-contact li,
+.rs-contact__value {
+  overflow-wrap: anywhere;
+}
+
+.rs-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rs-link:hover,
+.rs-link:focus-visible {
+  text-decoration: underline;
+}
+
+.rs-header__id {
+  min-width: 0;
+}
+
+/* Long unbroken skills or tags wrap instead of overflowing. */
+.rs-chips li,
+.rs-skills li {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Profile photo ---------- */
+.rs-photo {
+  display: block;
+  flex: none;
+  width: 26mm;
+  height: 26mm;
+  object-fit: cover;
+  background: #ddd;
+  border-radius: 50%;
+}
+
+.has-photo .rs-header {
+  position: relative;
+}
+
+/* Executive Gold: centred above the name, thin gold ring */
+.resume--executive-gold .rs-photo {
+  width: 25mm;
+  height: 25mm;
+  margin: 0 auto 4mm;
+  border: 0.5mm solid var(--rs-gold);
+  box-shadow: 0 0 0 1.2mm var(--rs-bg);
+}
+
+/* Modern Professional: top right of the header cell */
+.resume--modern-professional.has-photo .rs-header {
+  padding-right: 46mm;
+}
+
+.resume--modern-professional .rs-photo {
+  position: absolute;
+  top: 14mm;
+  right: 12mm;
+  width: 28mm;
+  height: 28mm;
+  border-radius: 2mm;
+}
+
+/* Minimalist White: small square, top right */
+.resume--minimalist-white.has-photo .rs-header {
+  padding-right: 32mm;
+  min-height: 26mm;
+}
+
+.resume--minimalist-white .rs-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24mm;
+  height: 24mm;
+  border-radius: 1mm;
+  filter: grayscale(0.15);
+}
+
+/* Creative Portfolio: large square with an offset accent block */
+.resume--creative-portfolio.has-photo .rs-header {
+  padding-right: 58mm;
+}
+
+.resume--creative-portfolio .rs-photo {
+  position: absolute;
+  top: 13mm;
+  right: 16mm;
+  width: 36mm;
+  height: 36mm;
+  border-radius: 0;
+  box-shadow: 2.5mm 2.5mm 0 var(--rs-accent);
+}
+
+/* Corporate Classic: passport-style portrait at the left */
+.resume--corporate-classic .rs-header__id {
+  flex: 1;
+}
+
+.resume--corporate-classic .rs-photo {
+  align-self: center;
+  width: 24mm;
+  height: 30mm;
+  border-radius: 0;
+  border: 1px solid #111;
+}
+
+/* Tech Specialist: round, teal ring, in the dark header */
+.resume--tech-specialist.has-photo .rs-header {
+  padding-right: 48mm;
+}
+
+.resume--tech-specialist .rs-photo {
+  position: absolute;
+  top: 11mm;
+  right: 16mm;
+  width: 26mm;
+  height: 26mm;
+  border: 0.6mm solid #5fd3c8;
+}
+
+/* Student & Graduate: round, white ring, in the header band */
+.resume--student-graduate.has-photo .rs-header {
+  padding-right: 50mm;
+}
+
+.resume--student-graduate .rs-photo {
+  position: absolute;
+  top: 10mm;
+  right: 16mm;
+  width: 28mm;
+  height: 28mm;
+  border: 1mm solid #fff;
+  box-shadow: 0 0 0 0.4mm var(--rs-accent);
+}
+
+/* Elegant Serif: round, hairline ring, right of the header */
+.resume--elegant-serif.has-photo .rs-header {
+  padding-right: 36mm;
+  min-height: 30mm;
+}
+
+.resume--elegant-serif .rs-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28mm;
+  height: 28mm;
+  border: 0.4mm solid var(--rs-accent);
+  box-shadow: 0 0 0 1.2mm var(--rs-bg);
+}
+
+/* Midnight Premium: replaces the monogram circle */
+.resume--midnight-premium.has-photo .rs-monogram {
+  display: none;
+}
+
+.resume--midnight-premium .rs-photo {
+  width: 22mm;
+  height: 22mm;
+  border: 0.4mm solid var(--rs-accent);
+}
+
+/* ---------- Custom accent colour ----------
+   Set by the renderer as --rs-accent-custom when the user picks a colour.
+   Backgrounds that were derived from a template's own colour are re-derived
+   from the chosen one so the document stays cohesive. */
+.resume-sheet[data-custom-accent] {
+  --rs-accent: var(--rs-accent-custom);
+}
+
+.resume--executive-gold[data-custom-accent] {
+  --rs-gold: var(--rs-accent-custom);
+}
+
+.resume--modern-professional[data-custom-accent] {
+  --rs-navy: color-mix(in srgb, var(--rs-accent-custom) 38%, #080c14);
+}
+
+.resume--modern-professional[data-custom-accent] .rs-aside .rs-heading {
+  color: color-mix(in srgb, var(--rs-accent-custom) 45%, #fff);
+}
+
+.resume--minimalist-white[data-custom-accent] .rs-title,
+.resume--minimalist-white[data-custom-accent] .rs-heading {
+  color: var(--rs-accent);
+}
+
+.resume--creative-portfolio[data-custom-accent] {
+  --rs-soft: color-mix(in srgb, var(--rs-accent-custom) 9%, #fffaf4);
+  --rs-rule: color-mix(in srgb, var(--rs-accent-custom) 14%, #fffaf4);
+}
+
+.resume--tech-specialist[data-custom-accent] {
+  --rs-chip-border: color-mix(in srgb, var(--rs-accent-custom) 45%, transparent);
+  --rs-chip-text: color-mix(in srgb, var(--rs-accent-custom) 80%, #000);
+}
+
+.resume--tech-specialist[data-custom-accent] .rs-header {
+  background: color-mix(in srgb, var(--rs-accent-custom) 16%, #05090a);
+}
+
+.resume--tech-specialist[data-custom-accent] .rs-title,
+.resume--tech-specialist[data-custom-accent] .rs-photo {
+  color: color-mix(in srgb, var(--rs-accent-custom) 55%, #fff);
+  border-color: color-mix(in srgb, var(--rs-accent-custom) 55%, #fff);
+}
+
+.resume--student-graduate[data-custom-accent] {
+  --rs-tint: color-mix(in srgb, var(--rs-accent-custom) 8%, #fff);
+  --rs-ink: color-mix(in srgb, var(--rs-accent-custom) 62%, #000);
+  --rs-chip-border: color-mix(in srgb, var(--rs-accent-custom) 30%, #fff);
+  --rs-chip-text: color-mix(in srgb, var(--rs-accent-custom) 80%, #000);
+}
+
+.resume--student-graduate[data-custom-accent] .rs-body {
+  --rs-side: color-mix(in srgb, var(--rs-accent-custom) 4%, #fff);
+}
+
+/* Midnight: the custom colour is for the dark screen version; the light print
+   version darkens it so it stays readable on white paper. */
+.resume--midnight-premium[data-custom-accent] {
+  --rs-chip-border: color-mix(in srgb, var(--rs-accent-custom) 50%, transparent);
+  --rs-chip-text: color-mix(in srgb, var(--rs-accent-custom) 35%, #fff);
+  --rs-rule: color-mix(in srgb, var(--rs-accent-custom) 32%, transparent);
+}
+
+.resume--midnight-premium.is-print-preview[data-custom-accent] {
+  --rs-accent: color-mix(in srgb, var(--rs-accent-custom) 62%, #000);
+  --rs-chip-border: color-mix(in srgb, var(--rs-accent-custom) 55%, #000);
+  --rs-chip-text: color-mix(in srgb, var(--rs-accent-custom) 50%, #000);
+  --rs-rule: color-mix(in srgb, var(--rs-accent-custom) 35%, transparent);
+}
+
+@media print {
+  .resume--midnight-premium[data-custom-accent] {
+    --rs-accent: color-mix(in srgb, var(--rs-accent-custom) 62%, #000);
+    --rs-chip-border: color-mix(in srgb, var(--rs-accent-custom) 55%, #000);
+    --rs-chip-text: color-mix(in srgb, var(--rs-accent-custom) 50%, #000);
+    --rs-rule: color-mix(in srgb, var(--rs-accent-custom) 35%, transparent);
+  }
+}
+
+/* ---------- Multi-page preview (builder) ---------- */
+.sheet-preview--flow {
+  aspect-ratio: auto;
+  height: calc(var(--paper-height) * var(--sheet-scale));
+}
+
+.sheet-preview--flow .sheet-preview__scaler {
+  height: auto;
+}
+
+.sheet-preview--flow .resume-sheet {
+  height: auto;
+  min-height: var(--paper-height);
+  overflow: visible;
+}
+
+.rs-pagebreak {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 0;
+  border-top: 0.5mm dashed rgba(122, 130, 145, 0.85);
+  pointer-events: none;
+}
+
+.rs-pagebreak__label {
+  position: absolute;
+  top: -3.4mm;
+  right: 3mm;
+  padding: 0.4mm 2mm;
+  color: #fff;
+  font: 600 7pt/1.4 var(--font-body);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(88, 96, 112, 0.92);
+  border-radius: 1mm;
+}
+
+/* ---------- Printing: keep items together, repeat page margins ----------
+   box-decoration-break: clone repeats a block's padding on every printed
+   page, so page 2 and later keep the same top and bottom margins. */
+@media print {
+  .resume-sheet,
+  .resume-sheet .rs-header,
+  .resume-sheet .rs-main,
+  .resume-sheet .rs-aside {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .rs-item,
+  .rs-contact-list li,
+  .rs-languages li {
+    break-inside: avoid;
+  }
+
+  .rs-heading {
+    break-after: avoid;
+  }
+
+  .rs-pagebreak {
+    display: none;
+  }
+}

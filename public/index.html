@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUXCV | Premium Online Resume Builder</title>
+  <meta name="description"
+    content="LUXCV is a premium online resume builder. Choose a refined template, edit with a live preview and export a print-ready PDF, privately, in your browser.">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/templates.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/nav-profile.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body id="top" class="page-home" data-page="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="LUXCV home">
+        <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+        <span>LUX<span class="brand__accent">CV</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu"
+          aria-label="Open main menu">
+          <span class="nav__toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="nav__menu" id="primary-menu">
+          <ul class="nav__list" role="list">
+            <li><a class="nav__link" href="#templates">Templates</a></li>
+            <li><a class="nav__link" href="#features">Features</a></li>
+            <li><a class="nav__link" href="#how-it-works">How It Works</a></li>
+          </ul>
+          <a class="btn btn--primary btn--sm nav__cta" href="builder.html">Create Resume</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow reveal">Premium resume builder</p>
+          <h1 class="hero__title reveal" id="hero-title" style="--i: 1">
+            <span class="hero__line">Your Career.</span>
+            <span class="hero__line hero__line--accent">Your Story.</span>
+            <span class="hero__line">Your Resume.</span>
+          </h1>
+          <p class="hero__lede reveal" style="--i: 2">
+            Craft a polished, professional resume in minutes. Choose a refined template, fill in your details, watch it
+            update live, and export a print-ready PDF, all inside your browser.
+          </p>
+          <div class="hero__actions reveal" style="--i: 3">
+            <a class="btn btn--primary btn--lg btn--arrow" href="builder.html">Build My Resume</a>
+            <a class="btn btn--secondary btn--lg" href="templates.html">Explore Templates</a>
+          </div>
+          <ul class="hero__assurances reveal" role="list" style="--i: 4">
+            <li>Free, no account needed</li>
+            <li>Saved privately in your browser</li>
+            <li>Print-ready A4 PDF</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual reveal" style="--i: 2">
+          <div class="resume-mockup" role="img"
+            aria-label="Preview of a LUXCV resume for a fictional product designer, showing a profile, work experience, skills and education.">
+            <div class="resume-paper">
+              <div class="resume-paper__header">
+                <div class="resume-paper__name">Muhammad Shahzad</div>
+                <div class="resume-paper__role">Web developer</div>
+                <div class="resume-paper__contact">
+                  <span>syed.shehzad@example.com</span>
+                  <span>+92 3XX XXXXXXX</span>
+                  <span>London, UK</span>
+                </div>
+              </div>
+
+              <div class="resume-paper__body">
+                <div class="resume-paper__main">
+                  <div class="resume-paper__section">
+                    <div class="resume-paper__heading">Profile</div>
+                    <p class="resume-paper__text">Web developer with two years of experience building responsive,
+                      high-performance websites and intuitive digital experiences for businesses across diverse
+                      industries.</p>
+                  </div>
+                  <div class="resume-paper__section">
+                    <div class="resume-paper__heading">Experience</div>
+
+                    <div class="resume-paper__job">
+                      <div class="resume-paper__job-head">
+                        <span class="resume-paper__job-title">Web Developer</span>
+                        <span class="resume-paper__job-meta">2024 – 2026</span>
+                      </div>
+                      <p class="resume-paper__text">Built a design system adopted by six product squads.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resume-paper__side">
+                  <div class="resume-paper__section">
+                    <div class="resume-paper__heading">Skills</div>
+                    <div class="resume-paper__skills">
+                      <span class="resume-paper__skill">HTML, CSS, JS</span>
+                      <span class="resume-paper__skill">WORDPRESS</span>
+                      <span class="resume-paper__skill">BOOTSTRAP5</span>
+                      <span class="resume-paper__skill">DESIGN SYSTEMS</span>
+                    </div>
+                  </div>
+                  <div class="resume-paper__section">
+                    <div class="resume-paper__heading">Education</div>
+                    <div class="resume-paper__job-title">BS COMPUTER SCIENCE</div>
+                    <div class="resume-paper__job-meta">THAL UNIVERSITY BHAKKAR 2024</div>
+                  </div>
+                  <div class="resume-paper__section">
+                    <div class="resume-paper__heading">Languages</div>
+                    <div class="resume-paper__text">English · URDU</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="mockup-chip mockup-chip--top">Live preview</span>
+            <span class="mockup-chip mockup-chip--bottom">A4 · PDF ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Template showcase ===== -->
+    <section class="section section--alt" id="templates" aria-labelledby="templates-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">Templates</p>
+          <h2 class="section__title" id="templates-title">Designed to be remembered</h2>
+          <p class="section__lede">Every layout is crafted for clarity and polish, so recruiters see your experience
+            first and the design second.</p>
+        </div>
+
+        <div class="grid grid--showcase">
+          <article class="template-card reveal">
+            <div class="template-card__preview">
+              <div class="tpl-thumb tpl-thumb--aurelia" aria-hidden="true">
+                <div class="tpl-thumb__head"><span class="tpl-thumb__name"></span><span class="tpl-thumb__role"></span>
+                </div>
+                <div class="tpl-thumb__main">
+                  <span class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span><span
+                    class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span>
+                </div>
+              </div>
+            </div>
+            <div class="template-card__body">
+              <h3 class="template-card__title">Executive Gold</h3>
+              <p class="template-card__desc">A refined single-column layout with a centred header and fine gold
+                detailing.</p>
+              <ul class="template-card__tags" role="list">
+                <li class="tag">Executive</li>
+                <li class="tag">Single column</li>
+              </ul>
+              <a class="btn btn--secondary btn--sm template-card__action" href="builder.html?template=executive-gold"
+                data-template-id="executive-gold">Use template<span class="visually-hidden"> Executive Gold</span></a>
+            </div>
+          </article>
+
+          <article class="template-card reveal" style="--i: 1">
+            <div class="template-card__preview">
+              <div class="tpl-thumb tpl-thumb--meridian" aria-hidden="true">
+                <div class="tpl-thumb__head"><span class="tpl-thumb__name"></span><span class="tpl-thumb__role"></span>
+                </div>
+                <div class="tpl-thumb__side"><span class="tpl-thumb__block"></span><span
+                    class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span></div>
+                <div class="tpl-thumb__main"><span class="tpl-thumb__block"></span><span
+                    class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span></div>
+              </div>
+            </div>
+            <div class="template-card__body">
+              <h3 class="template-card__title">Modern Professional</h3>
+              <p class="template-card__desc">A contemporary two-column layout with a full-height sidebar for contact
+                details and skills.</p>
+              <ul class="template-card__tags" role="list">
+                <li class="tag">Modern</li>
+                <li class="tag">Two column</li>
+              </ul>
+              <a class="btn btn--secondary btn--sm template-card__action"
+                href="builder.html?template=modern-professional" data-template-id="modern-professional">Use
+                template<span class="visually-hidden"> Modern Professional</span></a>
+            </div>
+          </article>
+
+          <article class="template-card reveal" style="--i: 2">
+            <div class="template-card__preview">
+              <div class="tpl-thumb tpl-thumb--onyx" aria-hidden="true">
+                <div class="tpl-thumb__head"><span class="tpl-thumb__name"></span><span class="tpl-thumb__role"></span>
+                </div>
+                <div class="tpl-thumb__side"><span class="tpl-thumb__block"></span><span
+                    class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span></div>
+                <div class="tpl-thumb__main"><span class="tpl-thumb__block"></span><span
+                    class="tpl-thumb__block"></span><span class="tpl-thumb__block"></span></div>
+              </div>
+            </div>
+            <div class="template-card__body">
+              <h3 class="template-card__title">Midnight Premium</h3>
+              <p class="template-card__desc">A sophisticated dark layout with gold accents, with a light version for
+                print.</p>
+              <ul class="template-card__tags" role="list">
+                <li class="tag">Dark</li>
+                <li class="tag">Premium</li>
+              </ul>
+              <a class="btn btn--secondary btn--sm template-card__action" href="builder.html?template=midnight-premium"
+                data-template-id="midnight-premium">Use template<span class="visually-hidden"> Midnight
+                  Premium</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section__footer reveal">
+          <a class="btn btn--primary btn--arrow" href="templates.html">View all templates</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">Features</p>
+          <h2 class="section__title" id="features-title">Everything you need, nothing you don’t</h2>
+          <p class="section__lede">A focused toolkit that keeps you writing about your career, not wrestling with
+            formatting.</p>
+        </div>
+
+        <div class="grid grid--features">
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </span>
+            <h3 class="feature__title">Live preview</h3>
+            <p class="feature__text">Watch every edit appear instantly on a true-to-size A4 page, so there are no
+              surprises at export time.</p>
+          </article>
+
+          <article class="feature reveal" style="--i: 1">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
+            </span>
+            <h3 class="feature__title">Refined templates</h3>
+            <p class="feature__text">Ten distinctive layouts, from executive and classic to creative, technical and
+              ATS-friendly, each tuned for readability.</p>
+          </article>
+
+          <article class="feature reveal" style="--i: 2">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="11" width="16" height="10" rx="2" />
+                <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+            </span>
+            <h3 class="feature__title">Private by design</h3>
+            <p class="feature__text">Your details are saved only in this browser. No account, no uploads and no
+              tracking.</p>
+          </article>
+
+          <article class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v12m0 0-4-4m4 4 4-4" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+              </svg>
+            </span>
+            <h3 class="feature__title">One-click PDF</h3>
+            <p class="feature__text">One-click download as an image-based PDF. It looks exactly like your preview, but
+              the text can’t be edited or selected. For a text PDF, use Save as PDF.</p>
+          </article>
+
+          <article class="feature reveal" style="--i: 1">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="m8 12.5 2.7 2.7L16 9.5" />
+              </svg>
+            </span>
+            <h3 class="feature__title">Guided validation</h3>
+            <p class="feature__text">Friendly inline checks catch missing details and formatting slips before you
+              export.</p>
+          </article>
+
+          <article class="feature reveal" style="--i: 2">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="12" rx="2" />
+                <path d="M8 20h8M12 16v4" />
+              </svg>
+            </span>
+            <h3 class="feature__title">Works on every screen</h3>
+            <p class="feature__text">Edit comfortably on a phone, tablet or desktop with a layout that adapts to you.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="section section--alt" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section__title" id="how-title">From blank page to PDF in three steps</h2>
+          <p class="section__lede">No sign-up and no learning curve, just you and your story.</p>
+        </div>
+
+        <ol class="steps" role="list">
+          <li class="step reveal">
+            <span class="step__number" aria-hidden="true">01</span>
+            <div>
+              <h3 class="step__title">Choose a template</h3>
+              <p class="step__text">Browse the collection and pick the layout that suits your story and your industry.
+              </p>
+            </div>
+          </li>
+          <li class="step reveal" style="--i: 1">
+            <span class="step__number" aria-hidden="true">02</span>
+            <div>
+              <h3 class="step__title">Add your details</h3>
+              <p class="step__text">Complete guided sections for experience, education and skills. Everything saves as
+                you go.</p>
+            </div>
+          </li>
+          <li class="step reveal" style="--i: 2">
+            <span class="step__number" aria-hidden="true">03</span>
+            <div>
+              <h3 class="step__title">Export your PDF</h3>
+              <p class="step__text">Review the live preview, then download a polished, print-ready PDF and an
+                image-based PDF.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="section__title" id="faq-title">Questions, answered</h2>
+        </div>
+
+        <div class="faq reveal">
+          <div class="faq__item is-open">
+            <h3 class="faq__question">
+              <button class="faq__trigger" type="button" id="faq-q1" aria-expanded="true" aria-controls="faq-a1">
+                <span>Is LUXCV free to use?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div class="faq__panel-inner">
+                <p class="faq__answer">Yes. LUXCV is a university semester project and is completely free, with no
+                  account or payment required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button class="faq__trigger" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+                <span>Where is my data stored?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div class="faq__panel-inner">
+                <p class="faq__answer">Everything stays in your browser’s local storage on this device. Nothing is sent
+                  to a server, so clearing your browser data will also remove your saved resume.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button class="faq__trigger" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+                <span>How do I download my resume as a PDF?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div class="faq__panel-inner">
+                <p class="faq__answer">Open the <a class="link" href="builder.html">builder</a>, choose Export, and
+                  select “Save as PDF” in your browser’s print dialog. The layout is set up for A4 pages. But
+                  downloading as a PDF creates an image-based PDF. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button class="faq__trigger" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+                <span>Can I switch templates after I start?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div class="faq__panel-inner">
+                <p class="faq__answer">Yes. Your content is stored separately from the design, so you can change
+                  templates at any time without retyping anything.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__question">
+              <button class="faq__trigger" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+                <span>Which browsers are supported?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-a5" role="region" aria-labelledby="faq-q5">
+              <div class="faq__panel-inner">
+                <p class="faq__answer">Any modern browser: current versions of Chrome, Edge, Firefox and Safari. For the
+                  most faithful PDF output we recommend Chrome or Edge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Closing call to action ===== -->
+    <section class="cta-band section--alt" id="create" aria-labelledby="create-title">
+      <div class="container container--narrow">
+        <div class="cta-band__inner reveal">
+          <p class="eyebrow">Get started</p>
+          <h2 class="cta-band__title" id="create-title">Ready to tell your story?</h2>
+          <p class="cta-band__text">Your next opportunity deserves a resume that looks as considered as the work behind
+            it.</p>
+          <div class="cta-band__actions">
+            <a class="btn btn--primary btn--lg btn--arrow" href="builder.html">Build My Resume</a>
+            <a class="btn btn--secondary btn--lg" href="templates.html">Explore Templates</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="LUXCV home">
+            <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+            <span>LUX<span class="brand__accent">CV</span></span>
+          </a>
+          <p class="footer__about">A premium resume builder that runs entirely in your browser.
+        </div>
+
+        <nav aria-labelledby="footer-explore">
+          <h2 class="footer__heading" id="footer-explore">Explore</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="#templates">Templates</a></li>
+            <li><a class="footer__link" href="#features">Features</a></li>
+            <li><a class="footer__link" href="#how-it-works">How It Works</a></li>
+            <li><a class="footer__link" href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-start">
+          <h2 class="footer__heading" id="footer-start">Get started</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="builder.html">Build My Resume</a></li>
+            <li><a class="footer__link" href="templates.html">Browse all templates</a></li>
+            <li><a class="footer__link" href="#top">Back to top</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; <span data-year>2026</span> LUXCV. A premium resume builder.</p>
+        <p>Your data never leaves your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth-client.js" defer></script>
+  <script src="js/nav-profile.js" defer></script>
+  <script src="js/auth-gate.js" defer></script>
+  <script src="js/nav-profile.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   LUXCV - Design tokens
+   Single source of truth for colour, type, spacing, shadows, radii,
+   motion and layout widths. Every other stylesheet reads from here.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* ----- Colour: surfaces ----- */
+  --color-bg: #0b0b0d;
+  --color-bg-secondary: #151519;
+  --color-bg-elevated: #1c1c22;
+  --color-bg-overlay: rgba(11, 11, 13, 0.82);
+
+  /* ----- Colour: accent ----- */
+  --color-gold: #d4af66;
+  --color-gold-bright: #e4c88c;
+  --color-gold-ink: #86672a; /* gold dark enough for text on light paper */
+  --color-gold-tint: rgba(212, 175, 102, 0.12);
+  --color-on-gold: #0b0b0d;
+
+  /* ----- Colour: text ----- */
+  --color-text: #f5f1e8;
+  --color-text-muted: #a7a7ae;
+
+  /* ----- Colour: lines ----- */
+  --color-border: rgba(245, 241, 232, 0.1);
+  --color-border-strong: rgba(245, 241, 232, 0.22);
+  --color-border-gold: rgba(212, 175, 102, 0.4);
+
+  /* ----- Colour: feedback (used by the builder later) ----- */
+  --color-success: #8cc59a;
+  --color-danger: #ec8f8f;
+
+  /* ----- Colour: resume paper ----- */
+  --color-paper: #fbf9f4;
+  --color-ink: #17171a;
+  --color-ink-muted: #5c5c64;
+  --color-paper-rule: #e6e0d2;
+
+  /* ----- Typography: families ----- */
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* ----- Typography: scale ----- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: clamp(1.75rem, 1.45rem + 1.3vw, 2.25rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+  --text-display: clamp(2.5rem, 1.6rem + 4.2vw, 4.75rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ----- Spacing (4px base) ----- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --section-padding: clamp(4rem, 2.8rem + 5vw, 7.5rem);
+
+  /* ----- Radii (kept small for a refined look) ----- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* ----- Borders ----- */
+  --border: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border-strong);
+  --border-gold: 1px solid var(--color-border-gold);
+
+  /* ----- Shadows ----- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow-paper: 0 30px 70px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+
+  /* ----- Motion ----- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 600ms;
+  --transition-base: 250ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ----- Layout widths ----- */
+  --container-max: 75rem;
+  --container-narrow: 48rem;
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 2rem);
+  --header-height: 4.25rem;
+  --toolbar-height: 3.75rem;
+
+  /* ----- Resume paper (A4) ----- */
+  --paper-width: 210mm;
+  --paper-height: 297mm;
+
+  /* ----- Stacking ----- */
+  --z-header: 100;
+  --z-skip: 200;
+}

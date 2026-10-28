@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Templates | LUXCV</title>
+  <meta name="description" content="Browse the LUXCV template collection: ten refined resume layouts, from executive and classic to creative, technical and ATS-friendly.">
+  <meta name="theme-color" content="#0B0B0D">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&amp;display=swap">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/templates.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/nav-profile.css">
+  <link rel="stylesheet" href="css/account.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body id="top" class="page-templates" data-page="templates">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="LUXCV home">
+        <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+        <span>LUX<span class="brand__accent">CV</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open main menu">
+          <span class="nav__toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="nav__menu" id="primary-menu">
+          <ul class="nav__list" role="list">
+            <li><a class="nav__link" href="templates.html" aria-current="page">Templates</a></li>
+            <li><a class="nav__link" href="index.html#features">Features</a></li>
+            <li><a class="nav__link" href="index.html#how-it-works">How It Works</a></li>
+          </ul>
+          <a class="btn btn--primary btn--sm nav__cta" href="builder.html">Create Resume</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="eyebrow">Template gallery</p>
+        <h1 class="page-hero__title" id="page-title">Choose your layout</h1>
+        <p class="page-hero__lede">Ten refined designs, one simple rule: your experience comes first. Preview any template with sample content, then pick one to begin. You can switch at any time without losing a word.</p>
+      </div>
+    </section>
+
+    <section class="section--tight" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="gallery-title">All templates</h2>
+
+        <div class="gallery-toolbar">
+          <div class="filter-bar" data-filter-bar role="group" aria-label="Filter templates by category"></div>
+          <p class="filter-status" data-filter-status role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="grid grid--gallery" data-gallery></div>
+
+        <noscript>
+          <p class="panel__text">The template gallery needs JavaScript to display previews. You can still <a class="link" href="builder.html">open the builder</a> and start with the default template.</p>
+        </noscript>
+
+        <div class="section__footer">
+          <a class="btn btn--primary btn--arrow" href="builder.html">Build My Resume</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Preview modal: a native <dialog>, filled in by js/gallery.js -->
+  <dialog class="modal" id="preview-modal" aria-labelledby="preview-title" aria-describedby="preview-desc">
+    <div class="modal__panel">
+      <header class="modal__header">
+        <div>
+          <p class="eyebrow" data-preview-kicker>Template preview</p>
+          <h2 class="modal__title" id="preview-title" data-preview-title></h2>
+        </div>
+        <button class="modal__close" type="button" data-modal-close aria-label="Close preview">
+          <span class="modal__close-icon" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="modal__body" tabindex="0" role="region" aria-label="Template preview">
+        <div class="modal__stage" role="img" data-preview-stage></div>
+
+        <div class="modal__info">
+          <p class="modal__desc" id="preview-desc" data-preview-desc></p>
+
+          <dl class="modal__facts">
+            <div>
+              <dt>Best for</dt>
+              <dd data-preview-bestfor></dd>
+            </div>
+            <div>
+              <dt>Layout</dt>
+              <dd data-preview-tags></dd>
+            </div>
+          </dl>
+
+          <div class="modal__print" data-preview-print hidden>
+            <button class="chip" type="button" data-print-toggle aria-pressed="false">Show print version</button>
+            <p class="modal__note" data-preview-printnote></p>
+          </div>
+
+          <p class="modal__note">Shown with sample content. Your own details will replace it in the builder.</p>
+        </div>
+      </div>
+
+      <footer class="modal__footer">
+        <div class="modal__nav">
+          <button class="btn btn--secondary btn--sm" type="button" data-preview-step="-1" aria-label="Previous template">Previous</button>
+          <button class="btn btn--secondary btn--sm" type="button" data-preview-step="1" aria-label="Next template">Next</button>
+          <span class="modal__count" data-preview-count aria-live="polite"></span>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--secondary" type="button" data-modal-close>Close</button>
+          <a class="btn btn--primary btn--arrow" href="builder.html" data-preview-use>Use Template<span class="visually-hidden" data-preview-use-name></span></a>
+        </div>
+      </footer>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="LUXCV home">
+            <img class="brand__mark" src="assets/icons/logo-mark.svg" width="28" height="28" alt="">
+            <span>LUX<span class="brand__accent">CV</span></span>
+          </a>
+          <p class="footer__about">A premium resume builder that runs entirely in your browser. Built as a university semester project with HTML, CSS and vanilla JavaScript.</p>
+        </div>
+
+        <nav aria-labelledby="footer-explore">
+          <h2 class="footer__heading" id="footer-explore">Explore</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="templates.html">Templates</a></li>
+            <li><a class="footer__link" href="index.html#features">Features</a></li>
+            <li><a class="footer__link" href="index.html#how-it-works">How It Works</a></li>
+            <li><a class="footer__link" href="index.html#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-start">
+          <h2 class="footer__heading" id="footer-start">Get started</h2>
+          <ul role="list">
+            <li><a class="footer__link" href="builder.html">Build My Resume</a></li>
+            <li><a class="footer__link" href="index.html">Home</a></li>
+            <li><a class="footer__link" href="#top">Back to top</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; <span data-year>2026</span> LUXCV. A university semester project.</p>
+        <p>Your data never leaves your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data-model.js" defer></script>
+  <script src="js/sample-data.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/template-renderer.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/auth-client.js" defer></script>
+  <script src="js/nav-profile.js" defer></script>
+  <script src="js/auth-gate.js" defer></script>
+  <script src="js/nav-profile.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
