@@ -1,5 +1,10 @@
 'use strict';
 
-// Entry point Vercel detects for Express: it must export the app (not call listen).
-// Locally, `npm start` runs server/server.js, which listens on a port instead.
-module.exports = require('./server/app');
+// Vercel looks for an entry file that imports express directly,
+// so this line must stay even though the app is built in server/app.js.
+const express = require('express'); // eslint-disable-line no-unused-vars
+
+const app = require('./server/app');
+
+// Export the app (don't call listen). Locally, npm start uses server/server.js.
+module.exports = app;
